@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 
 const path = require("path");
 
-require("dotenv").config({ path: process.cwd() + "/.env" });
-
+const dotenv = require("dotenv").config({ path: process.cwd() + "/.env" });
+console.log(dotenv);
 const sauceRoutes = require("./routes/sauces");
 const userRoutes = require("./routes/users");
 
