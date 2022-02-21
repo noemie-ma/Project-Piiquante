@@ -5,14 +5,20 @@ const mongoose = require("mongoose");
 
 const path = require("path");
 
-const dotenv = require("dotenv").config({ path: process.cwd() + "/.env" });
-console.log(dotenv);
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/.env" });
+
+console.log(process.env.MGD_USERNAME);
+console.log(process.env.MGD_PASSWORD);
+console.log(process.env.MGD_CLUSTER);
+console.log(process.env.MGD_NAME);
+
 const sauceRoutes = require("./routes/sauces");
 const userRoutes = require("./routes/users");
 
 mongoose
   .connect(
-    "mongodb+srv://${process.env.MGD_USERNAME}:${process.env.MGD_PASSWORD}@${process.env.MGD_CLUSTER}.mongodb.net/${process.env.MGD_NAME}?retryWrites=true&w=majority",
+    "mongodb+srv://${process.env.MGD_USERNAME}:${process.env.MGD_PASSWORD}@${process.env.MGD_CLUSTER}.bouxf.mongodb.net/${process.env.MGD_NAME}?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("La connexion à MongoDB a réussie !"))
